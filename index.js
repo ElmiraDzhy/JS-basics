@@ -1,24 +1,13 @@
 'use strict';
 
-const user = {
-    name: 'Vasya',
-    lastName: 'Ivanov',
-    age: 20,
-    
+
+const PROTOCOL = 'http://';
+
+const SERVER_IP = 'domain.com';
+
+const PORT = 3000;
+
+function getFullUrl(path=''){
+    return `${PROTOCOL}${SERVER_IP}:${PORT}/${path}`
 }
-
-const user1 = {
-    name: 'Petya',
-    lastName: 'Ivanov',
-    age: 15,
-}
-
-
-function fun (obj){
-    console.log(`${obj.name} ${obj.lastName} say hello`);
-}
-
-fun(user1);
-fun(user);
-
 
