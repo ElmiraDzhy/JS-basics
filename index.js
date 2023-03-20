@@ -1,43 +1,24 @@
 'use strict';
 
-let cat = {
-    color: 'grey',
-    weight: 3,
-    sex: 'mail',
-    breed: 'scottish',
-    name: 'Dimok',
-    insolenceLevel: 4,
-
-    sayMeow: function(){
-        console.log('meooooow');
-    },
-    sleep: function(){
-        console.log('Z-z-z-z..... Im sleeping');
-    }
+const user = {
+    name: 'Vasya',
+    lastName: 'Ivanov',
+    age: 20,
+    
 }
 
-function sayHello(obj){
-    obj.age = 18;
-}
-
-let obj = {
-    name: 'test',
-    hello: function(){
-        console.log('test hello');
-    },
+const user1 = {
+    name: 'Petya',
+    lastName: 'Ivanov',
+    age: 15,
 }
 
 
-sayHello(obj);
-
-function sum(a, b){
-    return a+b;
+function fun (obj){
+    console.log(`${obj.name} ${obj.lastName} say hello`);
 }
 
-
-function consoleResult(arg1, arg2, fun){
-    console.log( fun(arg1, arg2));
-}
+fun(user1);
+fun(user);
 
 
-console.log(consoleResult(3, 4, sum));
