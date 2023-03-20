@@ -1,24 +1,43 @@
 'use strict';
 
-function myPow (number, power) {
-    let result = 1;
-    for(let  i = 0; i < power; i++){
-        result *= number;
+let cat = {
+    color: 'grey',
+    weight: 3,
+    sex: 'mail',
+    breed: 'scottish',
+    name: 'Dimok',
+    insolenceLevel: 4,
+
+    sayMeow: function(){
+        console.log('meooooow');
+    },
+    sleep: function(){
+        console.log('Z-z-z-z..... Im sleeping');
     }
-    return result;
 }
 
-function factorial(number){
-    let result = 1;
-    if(number === 0 || number === 1){
-        return 1;
-    }
-    if(number < 0){
-        return 'Error';
-    }
-    for(let i = 1; i <= number; i++){
-        result *= i;
-    }
-    return result;
-
+function sayHello(obj){
+    obj.age = 18;
 }
+
+let obj = {
+    name: 'test',
+    hello: function(){
+        console.log('test hello');
+    },
+}
+
+
+sayHello(obj);
+
+function sum(a, b){
+    return a+b;
+}
+
+
+function consoleResult(arg1, arg2, fun){
+    console.log( fun(arg1, arg2));
+}
+
+
+console.log(consoleResult(3, 4, sum));
