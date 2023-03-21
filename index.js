@@ -1,45 +1,18 @@
 'use strict';
 
-
-//homework
-
-function multiplyTable (num) {
-    let result = 1;
-    for(let i = 1; i <= num; i++){
-        result = 2 * i;
-        console.log(`2 * ${i} = ${result}`)
-    }
-}
-
-
-//
+//вычисляемые свойства // computed properties
 
 const user = {
-    name: 'Name',
-    lastName: 'LastName',
-    age: 28,
-}
-const user1 = {
-    name: 'Name1',
-    lastName: 'LastName1',
-    age: 23,
-}
-
-const user2 = {
-    name: 'Name2',
-    lastName: 'LastName2',
-    age: 13,
+    firstName: 'John',
+    lastName: 'Smith',
+    'favourite Color': 'red',
+    2: 'value',
 }
 
 
-function getBanned (obj) {
-    obj.banned = true;
-    return obj.banned;
-    
-}
+let property = 'firstName'; 
 
-console.log(getBanned(user));
-console.log(getBanned(user1));
-console.log(getBanned(user2));
-
-
+console.log(user['favourite Color']);
+console.log(user[2]);
+console.log(user[property]);
+// console.log(user[prompt()]); - bad practice
