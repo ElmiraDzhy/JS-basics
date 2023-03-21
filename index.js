@@ -1,14 +1,26 @@
 'use strict';
+let name = 'Alex';
+let age = 15;
 
-const userPlan = {
-    Mon: 'dantist',
-    Tue: 'go to park',
-    Wed: 'hard work',
-    Thu: 'go to party',
-    Fri: 'read a book',
-    Sat: 'stay in bed',
+const user = {
+    age,
+    name,
+
 }
 
-let userChoice = prompt('what day of week you interested of?');
+const car = {
+    brand: 'Audi',
+    type: 'sedan',
+    volume: 1.6,
+    capasity: 5,
 
-alert( userPlan[userChoice] ? userPlan[userChoice] : 'Not');
+
+}
+// prop in obj
+
+console.log('color' in car);
+console.log('brand' in car);
+
+
+
+
