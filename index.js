@@ -1,49 +1,33 @@
 'use strict';
 
-const car = {
-    brand: 'Audi',
-    type: 'sedan',
-    volume: 1.6,
-    capasity: 5,
 
-
+const cat2 = {
+  name: 'barsik',
+  age: 3,
+  color: 'grey',
+}
+const cat3 = {
+  name: 'gold',
+  age: 2,
+  color: 'black',
+}
+const cat4 = {
+  name: 'mukr',
+  age: 4,
+  color: 'red',
 }
 
-const empty = {
 
+function Cat(name, color, age){
+  this.name = name;
+  this.color = color;
+  this.age = age;
 
-}
-
-
-function isObjectEmpty(obj){
-
-    for (const key in obj){
-        return false;
-    }
-
-    return true;
-}
-
-console.log(isObjectEmpty(empty));
-console.log(isObjectEmpty(car));
-
-//
-
-function sumKeys (obj) {
-  let result = 0;
-  for(const key in obj){
-    if(!isNaN(key)){
-    result+= Number(key);
-    }
+  this.sayMeow = function(){
+    return 'Meooooooooow';
   }
-  return result;
 }
 
-const obj = {
-  1: 'test',
-  2: 'test',
-  val: 'test',
-  4: 'test',
-}
+const blackCat = new Cat('Kitty', 3);
 
-console.log(sumKeys(obj));
+const cat = new Cat('mukr', 5, 'red');
