@@ -1,18 +1,14 @@
 'use strict';
 
-//вычисляемые свойства // computed properties
-
-const user = {
-    firstName: 'John',
-    lastName: 'Smith',
-    'favourite Color': 'red',
-    2: 'value',
+const userPlan = {
+    Mon: 'dantist',
+    Tue: 'go to park',
+    Wed: 'hard work',
+    Thu: 'go to party',
+    Fri: 'read a book',
+    Sat: 'stay in bed',
 }
 
+let userChoice = prompt('what day of week you interested of?');
 
-let property = 'firstName'; 
-
-console.log(user['favourite Color']);
-console.log(user[2]);
-console.log(user[property]);
-// console.log(user[prompt()]); - bad practice
+alert( userPlan[userChoice] ? userPlan[userChoice] : 'Not');
