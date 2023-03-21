@@ -9,28 +9,41 @@ const car = {
 
 }
 
-const car2 = {
-    brand: 'Audi',
-    type: 'sedan',
-    volume: 1.6,
-    capasity: 5,
+const empty = {
 
 
 }
 
-for (const key in car){
-    console.log(`${key}: ${car[key]}`);
-}
 
-function isObjectEquals(obj1, obj2){
+function isObjectEmpty(obj){
 
-    for (const key in obj1){
-        if(obj1[key] !== obj2[key]){
-            return false;
-        } 
+    for (const key in obj){
+        return false;
     }
+
     return true;
 }
 
-console.log(isObjectEquals(car, car2));
+console.log(isObjectEmpty(empty));
+console.log(isObjectEmpty(car));
 
+//
+
+function sumKeys (obj) {
+  let result = 0;
+  for(const key in obj){
+    if(!isNaN(key)){
+    result+= Number(key);
+    }
+  }
+  return result;
+}
+
+const obj = {
+  1: 'test',
+  2: 'test',
+  val: 'test',
+  4: 'test',
+}
+
+console.log(sumKeys(obj));
