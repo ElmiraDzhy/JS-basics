@@ -1,74 +1,52 @@
 'use strict';
 
+//homework
 
-function Cat(name, color, age){
-  this.name = name;
-  this.color = color;
-  this.age = age;
-
-  this.sayMeow = function(){
-    return 'Meooooooooow';
-  }
-}
-
-
-const cat = new Cat('murzik', 5, 'red');
-cat.askForFood = function(){
-  return `${this.name} wanna eat!!!`;
-}
-
-function User(firstName, lastName, age, email){
+function Worker (firstName, lastName, rate, days) {
   this.firstName = firstName;
   this.lastName = lastName;
-  this.age = age;
-  this.email = email;
+  this.rate = rate;
+  this.days = days;
+  
 
+  this.getSalary = function(){
+    if(this.rate < 0){
+      this.rate = 0;
+      return new RangeError('RATE CAN NOT BE LESS THAN 0');
+    }
+    if(this.days < 0){
+      this.days = 0;
+      return new RangeError('DAYS CAN NOT BE LESS THAN 0');
 
-  this.sayHello = function(){
-    return `${this.firstName} say hello!`;
+    }
+    return this.rate*this.days;
   }
-
-  this.checkMail = function(){
-    return this.email;
-  }
-
+  
 }
 
-const user = new User('John', "Doe", 23, 'john.mail.com');
-const user2 = new User('Jane', "Doe", 22, 'jane.mail.com');
+function Country (name, area, population) {
+  this.name = name;
+  this.area = area;
+  this.population = population;
 
-function Car (brand, maxSpeed, speed) {
-  this.brand = brand;
-  this.maxSpeed = maxSpeed;
-  this.speed = speed;
+  this.populationDensity = function(){
 
-  this.accelerate = function(num){
-    if(this.speed+num <= this.maxSpeed){
-      this.speed+=num ;
-    }else{
-      this.speed = this.maxSpeed;
+    if(this.population < 0){
+      this.population = 0;
+      return new RangeError('POPULATION CAN NOT BE LESS THAN 0');
     }
-      return  this.speed;
-  }
+    if(this.area < 0){
+      this.area = 0;
+      return new RangeError('AREA CAN NOT BE LESS THAN 0');
 
-  this.deaccelerate = function(num){
-    if(this.speed-num >= 0 ){
-      this.speed-=num;
-    }else{
-      this.speed = 0;
     }
-      return  this.speed;
-  }
 
-
-  this.stop = function(){
-    this.speed = 0;
-    return this.speed;
+    return this.population/this.area;
   }
 }
 
-const car = new Car('Toyota', 200, 60 );
-console.log(`car.speed = ${car.speed}`);
-console.log(`car.accelerate(40) = ${car.accelerate(40)}`);
-console.log(`car.accelerate(20) = ${car.accelerate(20)}`);
-console.log(`car.stop() = ${car.stop()}`);
+const worker = new Worker('Name', 'Surname', 50, 12);
+console.log(worker.getSalary());
+
+const country = new Country('USA', 5000000, 10000);
+console.log(country.populationDensity());
