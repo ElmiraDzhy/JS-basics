@@ -1,25 +1,11 @@
 'use strict';
 
 
-const objs = [{
-  name: 'test0',
-  lastname: 'test00',
+const array = [1,2,3,4,5,6,7,8,9];
 
-}, {
-  name: 'test1',
-  lastname: 'test11',
-  
-}, {
-  name: 'test2',
-  lastname: 'test22',
-  
-}]
+const arrayEven = array.filter( (element) =>{
+      return element%2 === 0;
+} );
 
-const array = [1,2,3,4];
+console.log(arrayEven);
 
-function addTwo(num){
-  return num+2;
-}
-
-
-console.log(array.map(addTwo));
