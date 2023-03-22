@@ -1,20 +1,4 @@
 'use strict';
-const array = [1,2,3,4,5];
-
-function doSmthWithArray(array){
-  for (let index = 0; index < array.length; index++) {
-    array[index] = addTwo(array[index]);
-  }
-
-  return array;
-}
-
-function addTwo(num){
-  return num+2;
-}
-
-console.log(doSmthWithArray(array));
-
 
 
 const objs = [{
@@ -31,5 +15,11 @@ const objs = [{
   
 }]
 
-objs.forEach((user) => user.age = 21 );
+const array = [1,2,3,4];
 
+function addTwo(num){
+  return num+2;
+}
+
+
+console.log(array.map(addTwo));
