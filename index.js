@@ -2,20 +2,27 @@
 
 //PROTOTYPES
 
-function User ( name, surname ){
-  this.name = name;
-  this.surname = surname;
-
+function Leadder ( currentStep = 0){
+  this.step = currentStep;
 }
 
-function UserPrototype(){
-  this.getFullName = function(){
-    return `${this.name} ${this.surname}`;
+function LeadderProto(){
+  this.up = function(){
+    this.step++;
+    return this.step;
   }
 
+  this.down = function(){
+    this.step--;
+    return this.step;
+
+  }
+
+  this.showStep =function (){
+    return this.step;
+  }
 }
 
-User.prototype = new UserPrototype();
+Leadder.prototype = new LeadderProto();
 
-const user = new User('Alan', 'Walker');
-const user2 = new User('Ann', 'Smith');
+const leadder = new Leadder();
