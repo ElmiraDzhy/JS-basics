@@ -2,26 +2,20 @@
 
 //PROTOTYPES
 
-function Cat (name){
+function User ( name, surname ){
   this.name = name;
+  this.surname = surname;
 
 }
 
-function Dog (name){
-  this.name = name;
-}
-
-function ProtoArray(type){
-  this.type = type;
-  this.sayMeow = function(){
-    return `${this.name} say meeeeeooow`;
+function UserPrototype(){
+  this.getFullName = function(){
+    return `${this.name} ${this.surname}`;
   }
+
 }
 
+User.prototype = new UserPrototype();
 
-
-Cat.prototype = new ProtoArray('cat');
-Dog.prototype = new ProtoArray('dog');
-
-const myCat = new Cat('Murzik');
-const myDog = new Dog('Bob');
+const user = new User('Alan', 'Walker');
+const user2 = new User('Ann', 'Smith');
