@@ -9,12 +9,12 @@ function Leadder ( currentStep = 0){
 function LeadderProto(){
   this.up = function(){
     this.step++;
-    return this.step;
+    return this;
   }
 
   this.down = function(){
     this.step--;
-    return this.step;
+    return this;
 
   }
 
@@ -26,3 +26,5 @@ function LeadderProto(){
 Leadder.prototype = new LeadderProto();
 
 const leadder = new Leadder();
+
+console.log(leadder.up().up().up().down().showStep()); //chaining (chain - цепочка)
