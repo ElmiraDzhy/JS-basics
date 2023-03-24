@@ -49,7 +49,7 @@ function MyProtoArray (){
       this[(this.length-1) - i] = last;
       this[i] = first;
     }
-    //return this;
+    return this;
   }
 
   this.shift = function(){
