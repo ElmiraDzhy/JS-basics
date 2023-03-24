@@ -2,29 +2,24 @@
 
 //PROTOTYPES
 
-function Leadder ( currentStep = 0){
-  this.step = currentStep;
+function Accumulator () {
+  this.value = 0;
+    for (let index = 0; index < arguments.length; index++) {
+      this.value += arguments[index];
+      
+    }
+
 }
-
-function LeadderProto(){
-  this.up = function(){
-    this.step++;
-    return this;
-  }
-
-  this.down = function(){
-    this.step--;
-    return this;
-
-  }
-
-  this.showStep =function (){
-    return this.step;
+function AccumulatorProto(){
+  this.add = function(){
+    for(let i = 0; i < arguments.length; i++){
+      this.value += arguments[i];
+    }
+    return this.value;
   }
 }
 
-Leadder.prototype = new LeadderProto();
+Accumulator.prototype = new AccumulatorProto();
 
-const leadder = new Leadder();
+const accumulator = new Accumulator(2,3,4,5,6);
 
-console.log(leadder.up().up().up().down().showStep()); //chaining (chain - цепочка)
