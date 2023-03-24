@@ -51,7 +51,21 @@ function MyProtoArray (){
     }
     //return this;
   }
+
+  this.shift = function(){
+    let result  = this[0];
+    delete this[0];
+    this.length--;
+    for(let i = 1; i < this.length; i++){
+      let index = i;
+      this[index-=1] = this[i];
+
+    }
+    delete this[this.length-1];
+    return result;
+  }
 }
 
-const protoArray = new MyProtoArray()
-MyArray.prototype = protoArray;
+MyArray.prototype = new MyProtoArray();
+
+
