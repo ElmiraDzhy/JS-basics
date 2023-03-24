@@ -3,6 +3,14 @@
 function MyArray (){
 
     this.length = 0;
+
+    for(let i = 0; i < arguments.length; i++){
+      this[this.length] = arguments[i];
+      this.length++;
+
+    }
+
+
     this.push = function(value){
         this[this.length] = value;
         this.length++;
@@ -33,7 +41,31 @@ function MyArray (){
     }
 
 
+    this.reverse = function(){
+      for (let i = this.length-1; i > 0; i--) {
+        let last = this[i];
+        let first = this[(this.length-1) - i];
+        this[(this.length-1) - i] = last;
+        this[i] = first;
+      }
+      //return this;
+    }
 
 }
 
-const myarr = new MyArray();
+const myarr = new MyArray(2,3,4,5,6);
+myarr.reverse();
+console.log(myarr);
+
+function someFunc(){
+let biggestNum = arguments[0]
+  for (let i =0; i < arguments.length; i++) {
+    if(arguments[i] > biggestNum){
+      biggestNum = arguments[i];
+    }
+  }
+
+  return biggestNum;
+}
+
+console.log(someFunc(1,2,3,4,5,6,7,8,644,56));
