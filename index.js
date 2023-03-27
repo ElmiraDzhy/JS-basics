@@ -3,8 +3,15 @@
 // ERRORS
 //  EXEPTIONS
 
-// try ... catch
 
+/**
+ * 
+ * @param {Number} num  - number that will power
+ * @param {Number} exp - exponent
+ * @throws {TypeError} - if args  is incorrect 
+ * @throws {RangeError} - if exp < 0
+ * @returns {Number}
+ */
 function pow(num, exp){
 let result = num;
 
@@ -30,9 +37,3 @@ let result = num;
   return result;
 }
 
-
-try {
-  pow(2, -1);
-} catch (error) {
-  console.log(error);
-}
