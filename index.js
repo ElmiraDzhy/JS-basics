@@ -16,14 +16,48 @@ class User{
 
 class Worker {
   constructor(name, rate, days){
+
     this.name = name;
-    this.rate = rate;
-    this.days = days;
+    this.rate = rate; //setter
+    this.days = days; //setter
+  }
+
+
+
+  set rate(value){
+    if(typeof value !== 'number'){
+          throw new TypeError('Rate must be a number');
+    }
+    if(value < 0) {
+          throw new RangeError('Rate cant be less 0');
+    } 
+      this._rate = value;
+  }
+
+  get rate(){
+      return this._rate;
+  }
+
+
+  set days(value){
+    if(typeof value !== 'number'){
+          throw new TypeError('Days must be a number');
+    }
+    if(value < 0) {
+          throw new RangeError('Days cant be less 0');
+    } 
+      this._days = value;
+  }
+
+  get days(){
+    return this._days;
   }
 
   getSalary(){
-    return this.rate*this.days;
+    return this.days*this.rate;
   }
+
+
 }
 
 class Car{
@@ -51,29 +85,9 @@ class Car{
   }
 }
 
-const userName = ['Kirill', 'Monky', 'Bob', 'Fill'];
-const surname = ['Smith', 'Test', 'Foll', 'Grey'];
 
-const users = [];
-const workers = [];
+const wrkr = new Worker('Matt', 7, 4);
 
-for(let i = 0; i < userName.length; i++){   
-    users.push(new User(userName[i], surname[i]));
-}
 
-for(let i = 0; i < userName.length; i++){   
-  workers.push(new Worker(userName[i], 4, 5));
-}
-
-console.log(users);
-console.log(workers);
-
-const car = new Car('Toyota Country', 260, 80);
-console.log(car.accelerate(100));
-console.log(car.accelerate(100));
-console.log(car.accelerate(100));
-console.log(car.deaccelerate(100));
-console.log(car.deaccelerate(80));
-console.log(car.stop());
 
 
