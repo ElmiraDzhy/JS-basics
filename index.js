@@ -2,24 +2,23 @@
 
 //PROTOTYPES
 
-function Accumulator () {
-  this.value = 0;
-    for (let index = 0; index < arguments.length; index++) {
-      this.value += arguments[index];
-      
-    }
-
-}
-function AccumulatorProto(){
-  this.add = function(){
-    for(let i = 0; i < arguments.length; i++){
-      this.value += arguments[i];
-    }
-    return this.value;
-  }
+const cat1 = {
+  name: 'Murzik',
+  age: 4,
 }
 
-Accumulator.prototype = new AccumulatorProto();
+const cat2 = {
+  name: 'Barsik',
+  age: 2,
+}
 
-const accumulator = new Accumulator(2,3,4,5,6);
+const CatProto = {
+ sayMeow: function(){
+  return `${this.name} say meow`;
+ },
+}
 
+cat1.__proto__ = CatProto;
+cat2.__proto__ = CatProto;
+
+console.log(cat1, cat2);
