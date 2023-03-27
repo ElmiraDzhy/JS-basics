@@ -1,52 +1,33 @@
 'use strict';
 
-//homework
+// ERRORS
+//  EXEPTIONS
 
-function Worker (firstName, lastName, rate, days) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.rate = rate;
-  this.days = days;
-  
+//
 
-  this.getSalary = function(){
-    if(this.rate < 0){
-      this.rate = 0;
-      return new RangeError('RATE CAN NOT BE LESS THAN 0');
-    }
-    if(this.days < 0){
-      this.days = 0;
-      return new RangeError('DAYS CAN NOT BE LESS THAN 0');
+function pow(num, exp){
+let result = num;
 
-    }
-    return this.rate*this.days;
+  if(typeof num !== 'number' && typeof exp !== 'number'){
+
+    return new TypeError('Arguments must be a number');
+  }
+
+  if(exp < 0){
+    
+    throw new RangeError(`Exponent can't be  lass then 0`);
+  }
+
+
+  if(exp === 1){
+    return num;
   }
   
-}
-
-function Country (name, area, population) {
-  this.name = name;
-  this.area = area;
-  this.population = population;
-
-  this.populationDensity = function(){
-
-    if(this.population < 0){
-      this.population = 0;
-      return new RangeError('POPULATION CAN NOT BE LESS THAN 0');
-    }
-    if(this.area < 0){
-      this.area = 0;
-      return new RangeError('AREA CAN NOT BE LESS THAN 0');
-
-    }
-
-    return this.population/this.area;
+  for(let i = 1; i < exp; i++){
+    result *= num;
   }
+
+  return result;
 }
 
-const worker = new Worker('Name', 'Surname', 50, 12);
-console.log(worker.getSalary());
 
-const country = new Country('USA', 5000000, 10000);
-console.log(country.populationDensity());
