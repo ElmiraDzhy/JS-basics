@@ -3,18 +3,18 @@
 // ERRORS
 //  EXEPTIONS
 
-//
+// try ... catch
 
 function pow(num, exp){
 let result = num;
 
   if(typeof num !== 'number' && typeof exp !== 'number'){
 
-    return new TypeError('Arguments must be a number');
+    throw new TypeError('Arguments must be a number');
   }
 
   if(exp < 0){
-    
+
     throw new RangeError(`Exponent can't be  lass then 0`);
   }
 
@@ -31,3 +31,8 @@ let result = num;
 }
 
 
+try {
+  pow(2, -1);
+} catch (error) {
+  console.log(error);
+}
