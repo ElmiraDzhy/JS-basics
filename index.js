@@ -3,90 +3,64 @@
 // CLASSES
 
 
-class User{
-  constructor(name, surname){
-    this.name = name;
-    this.surname = surname;
-  }
-
-  getFullName = () => { 
-    return `${this.name} ${this.surname}`;
-  }
-}
-
-class Worker {
-  constructor(name, rate, days){
-
-    this.name = name;
-    this.rate = rate; //setter
-    this.days = days; //setter
+class Monitor{
+  constructor(diagonal, matrix, brand, color){
+      this.diagonal = diagonal;
+      this.matrix = matrix;
+      this.brand = brand;
+      this.color = color;
   }
 
 
-
-  set rate(value){
-    if(typeof value !== 'number'){
-          throw new TypeError('Rate must be a number');
-    }
-    if(value < 0) {
-          throw new RangeError('Rate cant be less 0');
-    } 
-      this._rate = value;
+  on(){
+    return `${this.brand} is on`
   }
 
-  get rate(){
-      return this._rate;
+  off(){
+    return `${this.brand} is off`
   }
 
-
-  set days(value){
-    if(typeof value !== 'number'){
-          throw new TypeError('Days must be a number');
-    }
-    if(value < 0) {
-          throw new RangeError('Days cant be less 0');
-    } 
-      this._days = value;
-  }
-
-  get days(){
-    return this._days;
-  }
-
-  getSalary(){
-    return this.days*this.rate;
-  }
-
-
-}
-
-class Car{
-  constructor(brand, maxSpeed, currentSpeed = 0){
-    this.brand = brand;
-    this.maxSpeed = maxSpeed;
-    this.speed = currentSpeed;
-  }
-
-  stop = () =>{
-    this.speed = 0;
-    return `Speed of ${this.brand} is ${this.speed}`;
-  }
-
-  accelerate = (v) =>{
-    (this.speed + v <= this.maxSpeed) ?  this.speed += v :  this.speed = this.maxSpeed;
   
-    return `Speed of ${this.brand} is ${this.speed}`;
+}
+
+class Animal {
+  constructor(name, legs, type){
+    this.name = name; //this is setter!
+    this.legs = legs;
+    this.type = type;
   }
 
-  deaccelerate = (v) => {
-    (this.speed - v > 0) ?  this.speed -= v :  this.speed = 0;
-  
-    return `Speed of ${this.brand} is ${this.speed}`;
+  set name(value){
+    if(typeof value !== 'string'){
+      throw new TypeError('Name must be a string')
+    }
+    this._name = value;
+
+  }
+
+  get name(){
+    return this._name;
+  }
+
+  saySomth(){
+    return `${this._name}making noise`;
+  }
+
+  eat(){
+    return `${this._name} eating`
   }
 }
 
+class Dog  extends Animal{
+  constructor(name, legs, type, color){
+    super(name, legs, type);  
+    this.color = color;  
+  }
 
-const wrkr = new Worker('Matt', 7, 4);
+  run(){
+    return `${this._name} is running`;
+  }
+}
 
 
 
