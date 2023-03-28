@@ -1,101 +1,113 @@
 'use strict';
 
+const PI = 3.14;
+
 // CLASSES
 
+class Figure {
+  constructor(type){
+    this.type = type;
+  }
 
-class User {
-  constructor(name, surname){
-    this.name = name;
-    this.surname = surname;
-    this.isBanned = false;
+  getArea(){
   }
 
 }
 
-
-class Admin extends User{
-  constructor(name, surname, position){
-   super(name, surname);
-   this.isBanned = false;
-   this.position = 'admin;'
+class Triangle extends Figure{
+  constructor(a, h){
+    super('triangle');
+    this.a = a;
+    this.h = h;
+  
   }
 
-}
-
-
-
-class Moderator extends Admin{
-  constructor(name, surname, position){
-    super(name, surname);
-    this.isBanned = false;
-    this.position = 'moderator';
-   
-
+  set a(v){
+    this._a = v;
   }
 
-  getBan(user){
-    user.isBanned = !user.isBanned;
+  get a(){
+    return this._a;
   }
 
-}
+  set h(v){
+    this._h = v;
+  }
 
-
-const user = new User('User', 'Test');
-const admin = new Admin('Admin', 'Test', 'admin');
-const modrt = new Moderator('Moderator','Test', 'moderator');
-
-
-class Squirell {
-  constructor(name, color){
-    this.name = name;
-    this.color = color;
+  get h(){
+    return this._h;
   }
 
 
-  eat(){
-    return `${this.name} eating`
 
-  }
-
-  climb(){
-    return `${this.name} is on the tree`;
-  }
-}
-
-
-class FlyingSquirell extends Squirell{
-  constructor(name, color){
-    super(name, color);
-    
-  }
-
-  fly(){
-    return `${this.name} is flying`
+  //переопределение родительского метода - OVERRIDE
+  getArea(){
+    return (this.a*this.h)/2;
   }
 
 
 }
 
-class FairySquirell extends FlyingSquirell{
-  constructor(name, color, songs=[]){
-    super(name, color);
-    this.songs = songs;
+class Square extends Figure{
+  constructor(a){
+    super('square');
+    this.a = a; 
   }
 
-  dance(){
-    return `${this.name} dancing`;
-      
+  set a(v){
+    this._a = v;
   }
 
-  singASong(index){
-    return `${this.name} sing a ${this.songs[index]}`;
+  get a(){
+    return this._a;
+  }
+
+  getArea(){
+    return this.a * this.a;
+  }
+
+}
+
+class Circle extends Figure{
+  constructor(d){
+    super('circle');
+    this.d = d;
 
   }
 
-  checkIsSong(name){
-    return this.songs.includes(name);
+  set d(v){
+    this._d = v;
+  }
+
+  get d(){
+    return this._d;
+  }
+
+  getArea(){
+    return PI * this.d;
   }
 }
 
+const s = new Square(5);
 
-const sq = new FairySquirell('test', 'red', ['song1', 'song2', 'song3']);
+//
+/**
+
+ * 
+ * @param {Figure} obj 
+ * @returns 
+ */
+
+function getFugureArea(obj){
+  return obj.getArea();
+}
+
+/* 
+
+полиморфизм - способность функции работать с обьектами разных 
+типов если они связаны наследованием
+
+Так само как она работает с экземпляром Figure. она может работать 
+с любым наслдеником этоко класса
+
+*/
