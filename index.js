@@ -49,6 +49,14 @@ class Animal {
   eat(){
     return `${this._name} eating`
   }
+
+
+
+  static isAnimal(obj){
+    // return obj instanceof this;
+   return obj instanceof Animal;
+
+  }
 }
 
 class Dog  extends Animal{
