@@ -3,73 +3,99 @@
 // CLASSES
 
 
-class Monitor{
-  constructor(diagonal, matrix, brand, color){
-      this.diagonal = diagonal;
-      this.matrix = matrix;
-      this.brand = brand;
-      this.color = color;
+class User {
+  constructor(name, surname){
+    this.name = name;
+    this.surname = surname;
+    this.isBanned = false;
   }
 
-
-  on(){
-    return `${this.brand} is on`
-  }
-
-  off(){
-    return `${this.brand} is off`
-  }
-
-  
 }
 
-class Animal {
-  constructor(name, legs, type){
-    this.name = name; //this is setter!
-    this.legs = legs;
-    this.type = type;
+
+class Admin extends User{
+  constructor(name, surname, position){
+   super(name, surname);
+   this.isBanned = false;
+   this.position = 'admin;'
   }
 
-  set name(value){
-    if(typeof value !== 'string'){
-      throw new TypeError('Name must be a string')
-    }
-    this._name = value;
+}
+
+
+
+class Moderator extends Admin{
+  constructor(name, surname, position){
+    super(name, surname);
+    this.isBanned = false;
+    this.position = 'moderator';
+   
 
   }
 
-  get name(){
-    return this._name;
+  getBan(user){
+    user.isBanned = !user.isBanned;
   }
 
-  saySomth(){
-    return `${this._name}making noise`;
+}
+
+
+const user = new User('User', 'Test');
+const admin = new Admin('Admin', 'Test', 'admin');
+const modrt = new Moderator('Moderator','Test', 'moderator');
+
+
+class Squirell {
+  constructor(name, color){
+    this.name = name;
+    this.color = color;
   }
+
 
   eat(){
-    return `${this._name} eating`
-  }
-
-
-
-  static isAnimal(obj){
-    // return obj instanceof this;
-   return obj instanceof Animal;
+    return `${this.name} eating`
 
   }
-}
 
-class Dog  extends Animal{
-  constructor(name, legs, type, color){
-    super(name, legs, type);  
-    this.color = color;  
-  }
-
-  run(){
-    return `${this._name} is running`;
+  climb(){
+    return `${this.name} is on the tree`;
   }
 }
 
 
+class FlyingSquirell extends Squirell{
+  constructor(name, color){
+    super(name, color);
+    
+  }
+
+  fly(){
+    return `${this.name} is flying`
+  }
 
 
+}
+
+class FairySquirell extends FlyingSquirell{
+  constructor(name, color, songs=[]){
+    super(name, color);
+    this.songs = songs;
+  }
+
+  dance(){
+    return `${this.name} dancing`;
+      
+  }
+
+  singASong(index){
+    return `${this.name} sing a ${this.songs[index]}`;
+
+  }
+
+  checkIsSong(name){
+    return this.songs.includes(name);
+  }
+}
+
+
+const sq = new FairySquirell('test', 'red', ['song1', 'song2', 'song3']);
