@@ -1,30 +1,5 @@
 'use strict';
 
-const sumAll = (a,b,c) => a + b + c;
-
-function sumAllArgs (){
-  // let sum = 0;
-  // for (let index = 0; index < arguments.length; index++) {
-  //   sum += arguments[index];
-  // }
-
-
-  const argArr = Array.from(arguments);
-  // argArr.map((value) => {
-  //   sum+= value;
-  // });
-  return argArr.reduce((accumulator, currentValue,)=> accumulator + currentValue, 0);
-
-   
-}
-
-const sumAllArrow = (...args) =>{
-  return args.reduce((accumulator, currentValue,)=> accumulator + currentValue, 0);
-
-}
-
-
-
 class MyArray{
   constructor(){
     this.length = 0;
@@ -86,8 +61,27 @@ class MyArray{
 
 }
 
-///
 
-function restExample (a, b,...args){
-  console.log(args);
+function sumAll(...args){
+  let sum = 0;
+  for(let  i = 0; i < args.length; i++){
+
+    if(Array.isArray(args[i])){
+      for(let j = 0; j < args[i].length; j++){
+          sum += args[i][j];
+      }
+      i++; 
+    }
+
+    sum += args[i];
+  }
+
+  return sum;
 }
+
+
+const arr = [1,2,3,4,5,6,6,5,2];
+
+console.log(sumAll(arr,6,7));
+
+console.log([1,3,5,7, ...[2,4,6,8]]);
