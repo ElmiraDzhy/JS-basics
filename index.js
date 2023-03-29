@@ -1,43 +1,83 @@
 'use strict';
 
-const newspaper = {
-  title: 'My super news',
-  articles: [
-    {
-      author: 'Jhon Doe',
-      header: 'Article1',
-      body: 'lorem ipsum',
+const sumAll = (a,b,c) => a + b + c;
 
-    },
-    {
-      author: 'Alex Doe',
-      header: 'Article2',
-      body: 'lorem yuefe de ',
+function sumAllArgs (){
+  // let sum = 0;
+  // for (let index = 0; index < arguments.length; index++) {
+  //   sum += arguments[index];
+  // }
 
-    },
-    {
-      author: 'Jhon Smith',
-      header: 'Article3',
-      body: 'lorem frf 4fo34 wn gr',
 
-    },
-    {
-      author: 'Alan Doe',
-      header: 'Article4',
-      body: 'lorem inrf rfiuef ',
+  const argArr = Array.from(arguments);
+  // argArr.map((value) => {
+  //   sum+= value;
+  // });
 
-    },
-    {
-      author: 'Mihael Doe',
-      header: 'Article5',
-      body: 'lorem dolor sit amet',
-
-    },
-  ],
-  showArticles(){
-    this.articles.forEach((currentArticle, index) => {
-      console.log(this.title);
-      console.log(`${index} : ${currentArticle.author} - ${currentArticle.header}` );
-    })
-  } 
+  return argArr.reduce((accumulator, currentValue,)=> accumulator + currentValue, 0);
+   
 }
+
+
+
+class MyArray{
+  constructor(){
+    this.length = 0;
+
+    for(let i = 0; i < arguments.length; i++){
+      this[this.length] = arguments[i];
+      this.length++;
+  
+    }
+  }
+ 
+
+  push = function(value){
+    this[this.length] = value;
+    this.length++;
+  }
+
+  pop = function(value) {
+    let result = this[this.length-1];
+    delete this[this.length-1];
+    this.length--;
+    return result;
+  }
+
+  forEach = function(callback){
+      for(let i = 0; i < this.length; i++){
+        callback(this[i]);
+
+      }
+  }
+
+  filter = function(callback){
+    const newarr = new MyArray();
+    for(let i = 0; i < this.length; i++){
+      callback(this[i]) ? newarr.push(this[i]) : false;
+
+    }
+    return newarr;
+  }
+
+  reverse = function(){
+    for (let i = this.length-1; i > 0; i--) {
+      let last = this[i];
+      let first = this[(this.length-1) - i];
+      this[(this.length-1) - i] = last;
+      this[i] = first;
+    }
+  }
+
+  reduce (fn, initialValue){
+    let accumulator = initialValue;
+    for(let i = 0; i < this.length; i++){
+      accumulator = fn(accumulator, this[i], i);
+    }
+
+    return accumulator;
+  }
+
+
+}
+
