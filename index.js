@@ -1,5 +1,44 @@
 'use strict';
 
+
+const array = [2,3,4,5,6];
+const [, , , fourthElem] = array;
+
+
+//
+
+
+const cat = {
+  name: 'Barsik',
+  girlfriend: {
+    name: 'Lola',
+    childs: [{
+        name: 'child1',
+    },
+  {
+    name: 'child2',
+    
+  },
+  {
+    name: 'child3',
+    
+  }]
+   
+  }
+}
+
+const{
+girlfriend: {
+  childs:[
+    {name: firstChild},
+    {name: secondChild}
+  ]
+}
+} = cat
+
+console.log(firstChild, secondChild);
+
+
 const monitor = {
   sizes: {
 
@@ -32,44 +71,57 @@ const monitor = {
 
 }
 
-const cat = {
-  name: 'Barsik',
-  girlfriend: {
-    name: 'Lola',
-    childs: {
-        name: 'child1',
-    },
-   
+
+
+function getDiagonal ( {sizes: {
+  height: {value: heightValue },
+  width: {value: widthValue}
+  },
+
+manufacturer: {
+  address: {
+    city
   }
 }
-
-//
-// const height = monitor.size.height.value;
-// const width = monitor.size.width.value;
-
-const {sizes: {
-          height: {value: heightValue },
-          width: {value: widthValue}
-          },
-
-      manufacturer: {
-          address: {
-            city
-          }
-      }
-      } = monitor;
+}){
+    return Math.sqrt((heightValue * heightValue) + (widthValue * widthValue));
+}
 
 
+function getUserHello({name}){
+  return `Hello ${name}`;
+}
+
+const user = {
+  name: 'test',
+  age: 12,
+}
+
+console.log(getUserHello(user));
+
+
+function getSumOfProperties(obj){
+  return obj.prop1 + obj.prop2 + obj.prop3;
+}
+
+console.log(getSumOfProperties({
+  prop1: 2,
+  prop2: 3,
+  prop3: 5,
+}));
 
 
 
-const {
-  girlfriend: {name: barsikGirl},
-  girlfriend:{childs: {name: child}}
-} = cat;
+function getSumOfFirstThreeElem([first,second,third, ...restElem]){
+  console.log(restElem);
+  return first + second + third;
+}
+
+const arr = [1,2,3,4,5,6];
+
+console.log(getSumOfFirstThreeElem(arr));
 
 
-
-// const diagonal = Math.sqrt((heightValue * heightValue) + (widthValue * widthValue));
-
-console.log(child, barsikGirl);
+function getArraySum ([firstElem, ...restElems]){
+  return firstElem + restElems[restElems.length-1];
+}
