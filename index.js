@@ -13,9 +13,14 @@ function sumAllArgs (){
   // argArr.map((value) => {
   //   sum+= value;
   // });
-
   return argArr.reduce((accumulator, currentValue,)=> accumulator + currentValue, 0);
+
    
+}
+
+const sumAllArrow = (...args) =>{
+  return args.reduce((accumulator, currentValue,)=> accumulator + currentValue, 0);
+
 }
 
 
@@ -81,3 +86,8 @@ class MyArray{
 
 }
 
+///
+
+function restExample (a, b,...args){
+  console.log(args);
+}
